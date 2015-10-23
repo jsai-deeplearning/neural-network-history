@@ -1,0 +1,176 @@
+\documentclass[12pt,a4paper,oneside]{jsarticle}
+
+% file encoding
+\usepackage[utf8]{inputenc}
+
+% font setting
+\usepackage[T1]{fontenc} % set font encoding
+\usepackage[notext]{stix} % math font: STIX font
+%\usepackage{newtxmath} % math font: Times like
+%\usepackage{newpxmath} % math font: Platino like
+%\usepackage{eulervm} % math font: hand write like
+\usepackage{newtxtext} % text font: Times like
+%\usepackage{newpxtext} % text font: Platino like
+
+% extra/symbol fonts
+\usepackage[bold]{otf} % extended otf fonts
+\usepackage{pifont} % zapf dingbats etc.
+
+% amstex
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% graphics
+\usepackage[dvipdfmx]{graphicx}
+\graphicspath{{Fig/}}
+
+% PDF meta information and bookmarks
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper} % 日本語のhyperref
+\hypersetup{
+bookmarks=true,         % show bookmarks bar?
+bookmarksnumbered=true,
+bookmarkstype=toc,
+pdftitle={ニューラルネットワーク・深層学習研究の歴史},    % title
+pdfauthor={「深層学習 --- Deep Learning」執筆チーム},     % author
+pdfsubject={}, % subject
+pdfkeywords={ニューラルネットワーク;深層学習}, % list of keywords
+pdfnewwindow=true,      % links in new window
+}
+
+% subfigure
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\renewcommand\thesubtable{(\alph{subtable})}
+
+% set geometry: margin=3cm
+\usepackage[reset,dvipdfm]{geometry}
+\geometry{%
+truedimen,
+hmargin={3truecm, 3truecm}, vmargin=3truecm,
+%includehead, ignorefoot, headsep=\baselineskip, headheight=\baselineskip, footskip=0pt
+ignorehead, includefoot, footskip=2\baselineskip, headsep=0pt, headheight=0pt
+}
+\setlength{\fullwidth}{\textwidth}
+
+% other packages
+%\usepackage{setspace} % line spacing
+%\usepackage{enumitem} % list environments
+\usepackage{array,booktabs} % tables
+%\usepackage{fancybox} % oval, double, shadow boxes
+%\usepackage{url}
+%\usepackage{makeidx}  % allows for index generation
+%\usepackage{algpseudocode} % pseudo code: algorithmicx package
+%\usepackage{algorithm2e} % pseudo code: block with vertical line
+%\usepackage{listings} % program source code
+%\usepackage{amsthm} % theorem
+\usepackage{longtable}
+
+%%%%% LOCAL SETTINGS %%%%%
+
+% local macro definitions
+\usepackage{mathsymbols}
+
+% more linebreaks in equations
+%\binoppenalty=0
+%\relpenalty=0
+%\mathcode`\,="202C      % "," is considered as a binary operator
+
+% condense floats
+%\def\topfraction{0.99}
+%\def\bottomfraction{0.01}
+%\def\textfraction{0.01}
+%\def\floatpagefraction{0.99}
+%\def\dbltopfraction{0.99}
+%\def\dblfloatpagefraction{0.99}
+
+% title, author, and date
+\title{ニューラルネットワーク・深層学習研究の歴史}
+\author{「深層学習 --- Deep Learning」執筆チーム}
+\date{$\langle\,$\url{http://jsai-deeplearning.github.io/support/}$\,\rangle$}
+
+%%%%% END of PREAMPLES %%%%%
+
+\begin{document}
+
+% ---- Title ----
+\maketitle
+
+ニューラルネットと深層学習の研究に関するできごとを時間順にまとめた．
+参考のためコンピュータ関連分野全般での出来事も\ajBlackFlorette の記号で示しておく． 
+{\small\renewcommand{\arraystretch}{1.9}
+\begin{longtable}{@{\hspace{0.005\linewidth}}p{0.075\linewidth}@{\hspace{0.005\linewidth}}p{0.91\linewidth}@{\hspace{0.005\linewidth}}}
+\toprule \textbf{年} & \textbf{出来事} \\\midrule[\heavyrulewidth] \endhead
+\bottomrule \endfoot
+1943 & W.~McCulloch と W.~Pitts ``A Logical Calculus of the Ideas Immanent in Nervous Activity''：現在の人工ニューロン原型となる数理モデルの提案 \\
+1946 & {\ajBlackFlorette\ }J.~P.~Eckert  と J.~Mauchly：最初の電子計算機 ENIAC の開発 \\
+1949 & D.~O.~Hebb ``The Organization of Behavior: A Neuropsychological Theory''：ニューロンの学習モデルを提案 \\\midrule
+1950 & {\ajBlackFlorette\ }A.~M.~Turing ``"Computing Machinery and Intelligence''：人工知能の概念を提唱し，チューリングテストなど計算機による知性の実現に関する問題について論じた（概念自体は1947年にロンドン大の講義にて提唱）\\
+1951 & M.~Minsky と D.~Edmonds が，Hebbの学習則により学習するニューロンをエミュレートするハードウェアSNARC (Stochastic Neural Analog Reinforcement Computer) を開発 \\
+1956 & {\ajBlackFlorette\ }J.~McCarthy や M.~Minsky らが ``The Dartmouth Summer Research Project on Artificial Intelligence''，いわゆるダートマス会議を開催し，``Artificial Intelligence（人工知能）'' という言葉を提唱 \\
+1957 & {\ajBlackFlorette\ }J.~Backus による最初の高水準プログラミング言語 FORTRAN の開発 \\
+1958 & F.~Rosenblatt ``The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain''：現在のニューラルネットの原型となる\textbf{パーセプトロン}と誤り訂正学習則の開発により\textbf{第1次ニューラルネット黄金期}が始まる \\\midrule
+1960 & B.~Widrow と M.~E.~Hoff ``Adaptive Switching Circuits''：最小二乗法に基づくWidrow-Hoff学習則を採用したモデルを実行するADALINE (ADAptive LInear Element) の開発 \\
+1962 & F.~Rosenblatt ``Principles of Neurodynamics'' などでパーセプトロンの収束定理が示され，A.~B.~J.~Novikoff ``On Convergence Proofs on Perceptrons'' で簡潔な証明が示された\\
+1968 & {\ajBlackFlorette\ }D.~Engelbart による NLS (oN Line System) のデモンストレーションで，マウスなどの現在のGUIの主要な要素が提案される \\
+1969 & {\ajBlackFlorette\ }最初のパケット通信ネットワークであり，現在のインターネットの起源である ARPA-net の稼働 \\
+1969 & M. Minsky と S. A. Papert ``Perceptrons''：パーセプトロンが線形分離可能でない問題に対処できない欠点を指摘し\textbf{ニューラルネット第1次氷河期}が始まる \\\midrule
+1970 & D.~Marr ``A Theory for Cerebral Neocortex''：脳の情報処理における内部表現の重要性を指摘 \\
+1970 & {\ajBlackFlorette\ }E.~F.~Codd ``A Relational Model of Data for Large Shared Data Banks''：リレーショナル・データベースの理論の提唱 \\
+1973 & C.~von~der~Malsberg ``Self-Organization of Orientation Sensitive Cells in the Striate Cortex''：競合学習 \\
+1980 & K.~Fukushima ``Neocognitron: A Self-Organizing Neural Network Model for a Mechanism of Pattern Recognition Unaffected By Shift In Position''（日本語文献は1979出版）：現在の畳み込みニューラルネットの原型となる\textbf{ネオコグニトロン} \\\midrule
+1980 & {\ajBlackFlorette\ }国際会議 ``International Conference on Machine Learning'' 第1回の開催 \\
+1982 & J.~J.~Hopfield ``Neural Networks and Physical Systems with Emergent Collective Computational Abilities''：回帰結合ニューラルネットの一種であるホップフィールド・ネットワーク \\
+1982 & T.~Kohonen ``Self-Organized Formation of Topologically Correct Feature Maps''：自己組織化マップ \\
+1984 & S.~Geman と D.~Geman. ``Stochastic Relaxation, Gibbs Distributions, and the Bayesian Restoration of Images''：マルコフ確率場の学習などで用いるギブスサンプリング \\
+1985 & D.~H.~Ackleyら ``A Learning Algorithm for Boltzmann Machines''：\textbf{ボルツマンマシン} \\
+1986 & D.~E.~Rumelhart，G.~E.~Hinton，および R.~J.~Williams ``Learning Representations by Back-Propagating Errors''：\textbf{誤差逆伝播法}が開発され，線形分離可能でない問題が扱えるようになったことで\textbf{第2次ニューラルネット黄金期}が始まる \\
+1986 & P.~Smolensky ``Information Processing in Dynamical Systems: Foundations of Harmony Theory''：\textbf{制限ボルツマンマシン}をハーモニウムという名称で提案 \\
+1987 & T. J. Sejnowski ら ``Parallel Networks that Learn to Pronounce English Text''：英語の文字列からその発音記号を学習する問題を解くNetTalkを開発し，誤差逆伝播の実用性を実証 \\
+1987 & 国際会議 ``Neural Information Processing Systems'' 第1回の開催 \\
+1988 & G.~W.~Cottrellら ``Principal Component Analysis of Image via Backpropagation''：\textbf{自己符号化器} \\
+1989 & G.~Cybenko ``Approximation by Superpositions of a Sigmoidal Function''：3層の階層型ニューラルネットにより任意の連続関数が近似できるというuniversal approximation定理\\
+1989 & Y.~LeCunら ``Backpropagation Applied to Handwritten Zip Code Recognition''：誤差逆伝播学習を採用した\textbf{畳み込みニューラルネット}であるLeNet \\
+1989 & A.~Waibelら ``Phoneme Recognition Using Time-Delay Neural Networks''：時間遅れニューラルネット \\
+1989 & {\ajBlackFlorette\ }T.~Berners-Lee が，現在の World Wide Web の原型となるhttpプロトコルを利用した情報共有システムを考案 \\\midrule
+1990 & J.~L.~Elman ``Finding Structure in Time''：音声認識で利用される\textbf{回帰結合ニューラルネット}の一種エルマン・ネットワーク \\
+1991 & H.~T.~Siegelmann and E.~D.~Sontag ``Turing Computability with Neural Nets''：ニューラルネットによりチューリングマシンがエミュレートできることを示す \\
+1992 & G.~Tesauro ``Practical Issues in Temporal Difference Learning''：強化学習にニューラルネットを組み込むことで，自己対戦により学習できるバックギャモンプログラム TD-Gammon を開発 \\
+1995 & D.~Pomerleau らのプロジェクト ALVINN (Autonomous Land Vehicle In a Neural Network) が，ニューラルネットにより制御された自動車で，最大70マイル時の速度で90マイルの公道を走行する実験に成功 \\
+1995 & {\ajBlackFlorette\ }C.~Cortes と V.~N.~Vapnik ``Support-Vector Networks''：局所最適解の問題を解消した新たな非線形分類器であるサポートベクトルマシンの開発により，\textbf{ニューラルネット第2次氷河期}が始まる \\
+1997 & S.~Hochreiterら ``Long Short-Term Memory''：回帰結合ニューラルネットの一種\textbf{Long-Short Term Memory法} \\
+1997 & R.~Caruana ``Multitask Learning''：ニューラルネットによるマルチタスク学習に関する考察 \\\midrule
+2002 & G.~E.~Hinton ``Training Products of Experts by Minimizing Contrastive Divergence''：\textbf{コントラスティブ・ダイバージェンス法} \\
+2003 & Y.~Bengioら ``A Neural Probabilistic Language Model''：ニューラルネット言語モデル \\
+%2003 & M.~ Wellingら ``Approximate Inference in Boltzmann Machines''：ボルツマンマシンの平均場近似 \\
+2004 & {\ajBlackFlorette\ }J.~Dean と S.~Ghemawat ``MapReduce: Simplified Data Processing on Large Clusters''：分散並列計算用プログラミングモデルである MapReduce の開発 \\
+2004 & M.~Wellingら ``Exponential Family Harmoniums with an Application to Information Retrieval''：指数型ハーモニウム族 \\
+2006 & 深層学習に関する重要な研究がいくつか発表された\textbf{深層学習元年}ともいうべき年となった \\
+2006 & G.~E.~Hintonら ``Reducing the Dimensionality of Data with Neural Networks''：深層自己符号化器のRBMによる\textbf{事前学習} \\
+2006 & G.~E.~Hintonら ``A Fast Learning Algorithm for Deep Belief Nets''：\textbf{深層信念ネットワーク}のRBMによる事前学習 \\
+2007 & Y.~Bengioら ``Greedy Layer-Wise Training of Deep Networks''：DBNのRBMによる事前学習を実数値を扱えるDBNに拡張 \\
+2007 & R.~Salakhutdinovら ``Restricted Boltzmann Machines for Collaborative Filtering''：RBMの推薦システムへの適用 \\
+2007 & {\ajBlackFlorette\ }CUDA が公開され，GPU を用いた数値計算プログラミングが普及する契機になった \\
+2008 & R.~Collobertら ``A Unified Architecture for Natural Language Processing: Deep Neural Networks with Multitask Learning''：ニューラルネットによる言語モデル \\\midrule
+2010 & P.~Vincentら ``Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion''：\textbf{雑音除去自己符号化器} \\
+2010 & V.~Nairら ``Rectified Linear Units Improve Restricted Boltzmann Machines''：\textbf{ReLU活性化関数} \\
+2011 & J.~Duchi ``Adaptive Subgradient Methods for Online Learning and Stochastic Optimization''：学習率制御法の \textbf{AdaGrad} \\
+2011 & F.~Seide ``Conversational Speech Transcription Using Context-Dependent Deep Neural Networks''：大語彙連続音声認識実験で，深層学習が好成績をおさめ音声認識分野で注目され始める \\
+2011 & F.~Seideら ``Feature Engineering in Context-Dependent Deep Neural Networks for Conversational Speech Transcription''：識別的事前学習 \\
+2011 & R.~Socherら ``Dynamic Pooling and Unfolding Recursive Autoencoders for Paraphrase Detection''：展開再帰自己符号化器 \\
+2012 & A.~Krizhevskyら ``ImageNet Classification with Deep Convolutional Neural Networks''：一般画像認識のコンペティション ILSVRCで突出した成績をおさめ深層学習が注目を集めたことで\textbf{第3次ニューラルネット黄金期}が始まる \\
+2012 & Q.~V.~Leら ``Building High-Level Features Using Large Scale Unsupervised Learning''：分散並列計算システムDistBeliefを用いて実装した再構成型ICAを大規模画像DBに適用して特徴を抽出することで，いわゆる『おばあさん細胞』を獲得 \\
+2013 & 深層学習を中心に扱う国際会議 ``International Conference on Learning Representations'' 第1回の開催 \\
+2013 & I.~J.~Goodfellowら``MaxOut Networks''：MaxOut活性化関数 \\
+2013 & K.~ Vesel\`yら ``Sequence-Discriminative Training of Deep Neural Networks''：音声の系列識別学習への深層学習の適用 \\
+2013 & T. Mikolovら ``Efficient Estimation of Word Representations in Vector Space''：\textbf{word2vec} に実装されている意味表現モデル \\
+2014 & N.~Srivastavaら ``DropOut: A Simple Way to Prevent Neural Networks from Overfitting''： \textbf{DropOut} （プレプリントは2012年に公開）\\
+2014 & O.~Vinyalsら ``Show and Tell: a Neural Image Caption Generator''：深層学習による画像の説明文生成 \\
+2014 & I.~Sutskeverら ``Sequence to Sequence Learning with Neural Networks''：LSTMを系列どうしの対応付けに用いて機械翻訳を行う \\
+%2014 & G.~E.~Hintonら ``Distilling the Knowledge in a Neural Network''：蒸留と暗黒知識 \\
+2015 & J.~Baら ``	Adam: A Method for Stochastic Optimization''：学習率制御法の Adam \\
+2015 & V.~Mnihら ``Human-Level Control through Deep Reinforcement Learning''：深層学習を用いた強化学習システム deep Q-Learning で，コンピュータゲームで人間と同等の制御を行う \\
+\end{longtable}%
+\renewcommand{\arraystretch}{1}}
+
+\end{document}
