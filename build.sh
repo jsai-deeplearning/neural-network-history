@@ -27,6 +27,10 @@ paper=a4
   #extractbb ${figdir}/*.pdf ${figdir}/*.png ${figdir}/*.jpg
 #fi
 
+# Generate "version.tex"
+echo -n '### Generating version No... '
+git --no-pager log -1 --pretty='%ai; %h' > version.tex
+
 # build pdf file
 for target in ${build}; do
   if [ -f ${target}.aux ]; then
